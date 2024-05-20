@@ -186,19 +186,19 @@
             <BuildOrder>1</BuildOrder>
             <PCH>true</PCH>
         </PCHCompile>
-        <CppCompile Include="..\Unit1.cpp">
+        <CppCompile Include="sqlite3.c">
+            <BuildOrder>4</BuildOrder>
+        </CppCompile>
+        <None Include="sqlite3.hpp">
+            <BuildOrder>3</BuildOrder>
+        </None>
+        <CppCompile Include="Unit1.cpp">
             <Form>Form1</Form>
             <FormType>dfm</FormType>
-            <DependentOn>..\Unit1.h</DependentOn>
-            <BuildOrder>2</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="..\..\..\..\..\Downloads\ProjectDroneForRTF-main\sqlite3.c">
-            <BuildOrder>3</BuildOrder>
-        </CppCompile>
-        <None Include="..\..\..\..\..\Downloads\ProjectDroneForRTF-main\sqlite3.h">
+            <DependentOn>Unit1.h</DependentOn>
             <BuildOrder>4</BuildOrder>
-        </None>
-        <FormResources Include="..\Unit1.dfm"/>
+        </CppCompile>
+        <FormResources Include="Unit1.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
