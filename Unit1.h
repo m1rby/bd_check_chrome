@@ -17,6 +17,12 @@
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.ComCtrls.hpp>
 using namespace std; // Добавьте эту директиву
+
+struct TRowData {
+    UnicodeString Url;
+    UnicodeString Title;
+    int VisitCount;
+};
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -43,12 +49,6 @@ __published:    // IDE-managed Components
 private:    // User declarations
 public:        // User declarations
 	__fastcall TForm1(TComponent* Owner);
-    struct TRowData
-    {
-        UnicodeString Url;
-        UnicodeString Title;
-        int VisitCount;
-    };
 
 
 };
@@ -96,6 +96,34 @@ public:
         drones.clear();
     }
 };
+
+class TDBThread : public TThread
+{
+private:
+    TForm1 *Form;
+    String dbPath;
+
+protected:
+    void __fastcall Execute();
+    void __fastcall UpdateUI();
+
+public:
+    __fastcall TDBThread(TForm1 *Form, String dbPath);
+};
+
+class TDroneThread : public TThread
+{
+private:
+    TForm1 *Form;
+
+protected:
+    void __fastcall Execute();
+    void __fastcall UpdateUI();
+
+public:
+    __fastcall TDroneThread(TForm1 *Form);
+};
+
 
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;
